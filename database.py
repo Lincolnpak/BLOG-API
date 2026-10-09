@@ -13,12 +13,13 @@ def init_db():
     """)
 
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS posts(
+        CREATE TABLE IF NOT EXISTS posts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             content TEXT NOT NULL,
             author_id INTEGER NOT NULL,
-            views INTEGER NOT NULL DEFAULT 0
+            views INTEGER NOT NULL DEFAULT 0,
+            FOREIGN KEY (author_id) REFERENCES authors(id) ON DELETE CASCADE
         )
     """)
 
